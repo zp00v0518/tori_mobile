@@ -3,8 +3,8 @@ import 'package:tori_mobile/utils/validator/input_validator.dart';
 import '../components/atoms/input_password.dart';
 import '../components/atoms/input_email.dart';
 import '../components/atoms/button.dart';
-import '../network/networking.dart';
 import '../network/api.dart';
+import 'dart:convert';
 
 class Login extends StatefulWidget {
   @override
@@ -50,14 +50,20 @@ class _LoginState extends State<Login> {
                   if (!resultValidate) return;
                   const String url = 'https://dev.tori.one/login/';
                   Api api = Api();
-                  var data = await api.postResponse(url, {
+                  var response = await api.postResponse(url, {
                     '_csrf_token':
                         'TgRXUMvJl2qP21nrumtxfspGjbS4KJVr8LtPLvDg3mk',
                     '_username': 'demo@toriapps.com',
                     '_password': 'Demo2019!',
                     'submitBtn': 'on'
                   });
-                  print(data);
+                  var data = response['data'];
+                  Pattern pattern = r'\[.{0,}\]';
+                  RegExp regex = new RegExp(pattern);
+                  data = data.replaceAll('&quot;', '\"');
+                  data = regex.stringMatch(data);
+                  var menuData = jsonDecode(data);
+                  print(menuData);
                 },
               ),
             ],

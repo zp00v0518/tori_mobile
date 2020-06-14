@@ -14,7 +14,6 @@ class Api {
   Future postResponse(String url, Map data) async {
     http.Response response = await http.post(url, body: data, headers: headers);
     var result = await handleResponse(response);
-
     return separateResponse(result);
   }
 
