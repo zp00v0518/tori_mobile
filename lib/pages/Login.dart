@@ -1,10 +1,11 @@
+import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:tori_mobile/utils/validator/input_validator.dart';
 import '../components/atoms/input_password.dart';
 import '../components/atoms/input_email.dart';
 import '../components/atoms/button.dart';
 import '../network/api.dart';
-import 'dart:convert';
+import '../state/index.dart';
 
 class Login extends StatefulWidget {
   @override
@@ -62,8 +63,7 @@ class _LoginState extends State<Login> {
                   RegExp regex = new RegExp(pattern);
                   data = data.replaceAll('&quot;', '\"');
                   data = regex.stringMatch(data);
-                  var menuData = jsonDecode(data);
-                  // print(menuData);
+                  menuData = jsonDecode(data);
                   Navigator.pushNamed(context, '/');
                 },
               ),

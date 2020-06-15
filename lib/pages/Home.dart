@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../state/index.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -7,13 +8,8 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   @override
-  void initState() {
-    super.initState();
-    print(context);
-  }
-
-  @override
   Widget build(BuildContext context) {
+    print(menuData);
     return Scaffold(
       appBar: AppBar(
         title: Text("Second Route"),
