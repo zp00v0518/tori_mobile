@@ -1,11 +1,10 @@
-import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:tori_mobile/utils/validator/input_validator.dart';
-import '../components/atoms/input_password.dart';
-import '../components/atoms/input_email.dart';
-import '../components/atoms/button.dart';
-import '../network/api.dart';
-import '../state/index.dart';
+import '../../components/atoms/input_password.dart';
+import '../../components/atoms/input_email.dart';
+import '../../components/atoms/button.dart';
+import '../../network/api.dart';
+import './login_utils.dart';
 
 class Login extends StatefulWidget {
   @override
@@ -59,11 +58,8 @@ class _LoginState extends State<Login> {
                     'submitBtn': 'on'
                   });
                   var data = response['data'];
-                  Pattern pattern = r'\[.{0,}\]';
-                  RegExp regex = new RegExp(pattern);
-                  data = data.replaceAll('&quot;', '\"');
-                  data = regex.stringMatch(data);
-                  menuData = jsonDecode(data);
+                  separateStartPage(data);
+
                   Navigator.pushNamed(context, '/');
                 },
               ),
