@@ -63,7 +63,8 @@ class _LoginState extends State<Login> {
                   data = data.replaceAll('&quot;', '\"');
                   data = regex.stringMatch(data);
                   var menuData = jsonDecode(data);
-                  print(menuData);
+                  // print(menuData);
+                  Navigator.pushNamed(context, '/');
                 },
               ),
             ],

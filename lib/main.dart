@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import './pages/Login.dart';
+import './routes/routes.dart';
+import './pages/Home.dart';
 
 void main() {
   runApp(MyApp());
@@ -11,7 +12,8 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       theme: ThemeData.light(),
       title: 'TORI',
-      home: Login(),
+      initialRoute: '/login',
+      routes: routes,
     );
   }
 }
