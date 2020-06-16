@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import '../../state/drawerData.dart';
+import './Sidebar.dart';
 
 class AppDrawer extends StatefulWidget {
   @override
@@ -12,11 +14,19 @@ class _AppDrawerState extends State<AppDrawer> {
       child: ListView(
         children: <Widget>[
           DrawerHeader(
-            child: Text('Drawer Header'),
+            margin: EdgeInsets.all(0),
+            child: UserAccountsDrawerHeader(
+              accountName: Text(userName),
+              accountEmail: Text(userEmail),
+              currentAccountPicture: CircleAvatar(
+                  // backgroundImage: NetworkImage(userFoto),
+                  ),
+            ),
             decoration: BoxDecoration(
               color: Colors.blue,
             ),
           ),
+          SideBar(),
         ],
       ),
     );

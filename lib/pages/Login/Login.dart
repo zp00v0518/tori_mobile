@@ -5,6 +5,8 @@ import '../../components/atoms/input_email.dart';
 import '../../components/atoms/button.dart';
 import '../../network/api.dart';
 import './login_utils.dart';
+import '../../variables.dart';
+
 
 class Login extends StatefulWidget {
   @override
@@ -48,9 +50,10 @@ class _LoginState extends State<Login> {
                 onTap: () async {
                   bool resultValidate = _formKey.currentState.validate();
                   if (!resultValidate) return;
-                  const String url = 'https://dev.tori.one/login/';
+                  // const String url = 'https://dev.tori.one/login/';
+                  const String url = '/login/';
                   Api api = Api();
-                  var response = await api.postResponse(url, {
+                  var response = await api.postResponse(kbaseUrl +  url, {
                     '_csrf_token':
                         'TgRXUMvJl2qP21nrumtxfspGjbS4KJVr8LtPLvDg3mk',
                     '_username': 'demo@toriapps.com',

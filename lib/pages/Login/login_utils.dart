@@ -20,6 +20,7 @@ void getUserData(data){
   var userData = document.querySelector('#user-info-img');
   getUserName(userData);
   getUserFoto(userData);
+  getUserEmail(userData);
 }
 void getUserName(userData) {
   var name = userData.querySelector('h3');
@@ -27,5 +28,9 @@ void getUserName(userData) {
 }
 void getUserFoto(userData){
   var elem = userData.querySelector('img');
-  userFoto = elem['src'];
+  userFoto = elem.attributes['src'];
+}
+void getUserEmail(userData){
+  var elems = userData.querySelectorAll('a');
+  userEmail = elems[1].innerHtml;
 }

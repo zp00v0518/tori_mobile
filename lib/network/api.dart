@@ -12,7 +12,8 @@ Map<String, String> headers = {
 
 class Api {
   Future postResponse(String url, Map data) async {
-    http.Response response = await http.post(url, body: data, headers: headers);
+    http.Response response =
+        await http.post(url, body: data, headers: headers);
     var result = await handleResponse(response);
     return separateResponse(result);
   }
@@ -45,7 +46,7 @@ separateResponse(response) {
   try {
     decodeData = jsonDecode(data);
   } catch (err) {}
-  Map <String, dynamic> result = {
+  Map<String, dynamic> result = {
     'data': decodeData != null ? decodeData : response.body,
     'x-route-name': response.headers['x-route-name'],
   };
