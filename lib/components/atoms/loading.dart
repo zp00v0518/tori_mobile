@@ -4,10 +4,10 @@ class Loading {
   showLoading(context) {
     return showGeneralDialog(
         context: context,
-        barrierDismissible: true,
-        barrierLabel:
-            MaterialLocalizations.of(context).modalBarrierDismissLabel,
-        barrierColor: Colors.black45,
+        barrierDismissible: false,
+        // barrierLabel:
+        //     MaterialLocalizations.of(context).modalBarrierDismissLabel,
+        // barrierColor: Colors.black45,
         transitionDuration: const Duration(milliseconds: 200),
         pageBuilder: (BuildContext buildContext, Animation animation,
             Animation secondaryAnimation) {
