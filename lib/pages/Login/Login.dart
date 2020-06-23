@@ -6,6 +6,7 @@ import '../../components/atoms/button.dart';
 import '../../network/api.dart';
 import './login_utils.dart';
 import '../../variables.dart';
+import '../../components/atoms/loading.dart';
 
 
 class Login extends StatefulWidget {
@@ -50,6 +51,7 @@ class _LoginState extends State<Login> {
                 onTap: () async {
                   bool resultValidate = _formKey.currentState.validate();
                   if (!resultValidate) return;
+                  Loading().showLoading(context);
                   // const String url = 'https://dev.tori.one/login/';
                   const String url = '/login/';
                   Api api = Api();
@@ -62,7 +64,7 @@ class _LoginState extends State<Login> {
                   });
                   var data = response['data'];
                   separateStartPage(data);
-
+                  Loading().hideLoading(context);
                   Navigator.pushNamed(context, '/');
                 },
               ),
